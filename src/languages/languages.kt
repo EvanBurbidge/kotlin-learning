@@ -1,5 +1,7 @@
 package languages
 
+import java.util.Scanner;
+
 data class Language(var description: String, val language: String)
 
 fun createLanguage(description: String, language: String) = Language(description, language);
@@ -24,10 +26,23 @@ fun removeLanguage(languages: List<Language>, target: String): List<Language> = 
 
 
 fun main() {
-    var languages = updateLanguage(getLanguages(), "fr", "is it the french language");
-    languages = removeLanguage(languages, "de");
-    for (item in languages) {
-        println(item.description);
-        println(item.language);
+    val reader = Scanner(System.`in`);
+    var run = true;
+
+    while (run) {
+        println(playHangman(5));
+        println("Game over do you want to go again yes or no?")
+        val answer =  reader.next();
+        run = answer == "yes";
+        if (answer != "no") {
+            println("going again");
+        }
     }
+
+//    var languages = updateLanguage(getLanguages(), "fr", "is it the french language");
+//    languages = removeLanguage(languages, "de");
+//    for (item in languages) {
+//        println(item.description);
+//        println(item.language);
+//    }
 }
